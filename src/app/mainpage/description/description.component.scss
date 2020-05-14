@@ -1,0 +1,52 @@
+.Container {
+    padding: 12.5% 13.7%;
+
+    .Namefield {
+        padding-bottom: 6px;
+    }
+
+    .Addressfield {
+        .Flex {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        padding-bottom: 6px;
+    }
+
+    .Attributes {
+        .Flex {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        padding-bottom: 6px;
+    }
+
+    .InputForm {
+        width: 100%;
+
+        .FullWidth {
+            width: 100%;
+            background-color: #9999991A;
+            height: 37px;
+        }
+    }
+}
+
+.pageBtn {
+    margin-top: 5px;
+    height: 32px;
+}
+
+.mat-form-field-underline {
+    display: none;
+}
+
+::ng-deep .attSelect div.mat-select-arrow-wrapper {
+    display: none;
+}
+
+::ng-deep .attSelect.mat-select {
+    display: inline;
+}

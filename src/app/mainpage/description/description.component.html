@@ -1,1 +1,59 @@
-<p>description works!</p>
+<div class="Container">
+    <div class="Namefield">
+        <h2> Name/Descritpion</h2>
+        <p>Warning editing the facility name may really confuse your active users please think twice before editing the
+            name and location of your facility.</p>
+        <div class="InputForm">
+            <mat-form-field appearance="" class="FullWidth">
+                <input matInput class="" placeholder="Facility Name">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="Addressfield">
+        <h2>Address</h2>
+        <div class="Flex">
+            <p>Edocuments Ltd, 32 Waterhouse Business centre, Chelmsford, Essex, CM ...</p>
+            <mat-icon>play_circle_outline</mat-icon>
+        </div>
+    </div>
+    <div class="Sitefield">
+        <h2> Site</h2>
+        <p>This facility belongs to this site :</p>
+        <div class="InputForm">
+            <mat-form-field appearance="" class="FullWidth">
+                <mat-select [(value)]="selected" (selectionChange)="siteChange($event)">
+                    <mat-option value="1">1</mat-option>
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="3">3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="Attributes">
+        <h2>Attributes</h2>
+        <p>This dynamic list is from</p>
+        <!-- <div class="Flex">
+            <div class="InputForm">
+                <mat-form-field appearance="" class="FullWidth">
+                    <input matInput class="" placeholder="Facility Name">
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color="warn" class="pageBtn">Delete</button>
+        </div> -->
+        <!-- This is where we will insert the dynamic components -->
+        <!-- <br/>
+        <div #container></div>
+        <button (click)="add()">Dynamically Add Component</button> -->
+        <div #container></div>
+        <button mat-icon-button matTooltip="Attributes" (click)=selectLan.open()>
+
+            <mat-icon>add_circle</mat-icon>
+
+            <mat-select #selectLan [(value)]="selectedAtt" (selectionChange)="attChange($event)" class="attSelect">
+                <mat-option value="en">English</mat-option>
+                <mat-option value="de">Deutsch</mat-option>
+            </mat-select>
+
+        </button>
+    </div>
+</div>

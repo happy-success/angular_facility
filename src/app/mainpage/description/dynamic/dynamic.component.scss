@@ -1,0 +1,13 @@
+.Flex {
+
+    display: flex;
+    justify-content: space-between;
+
+    .FullWidth {
+        width: 90%;
+        background-color: #9999991A;
+        height: 37px;
+    }
+
+    padding-bottom: 6px;
+}
