@@ -32,26 +32,16 @@
     <div class="Attributes">
         <h2>Attributes</h2>
         <p>This dynamic list is from</p>
-        <!-- <div class="Flex">
-            <div class="InputForm">
-                <mat-form-field appearance="" class="FullWidth">
-                    <input matInput class="" placeholder="Facility Name">
-                </mat-form-field>
-            </div>
-            <button mat-raised-button color="warn" class="pageBtn">Delete</button>
-        </div> -->
-        <!-- This is where we will insert the dynamic components -->
-        <!-- <br/>
+
         <div #container></div>
-        <button (click)="add()">Dynamically Add Component</button> -->
-        <div #container></div>
+
         <button mat-icon-button matTooltip="Attributes" (click)=selectLan.open()>
 
             <mat-icon>add_circle</mat-icon>
 
             <mat-select #selectLan [(value)]="selectedAtt" (selectionChange)="attChange($event)" class="attSelect">
-                <mat-option value="en">English</mat-option>
-                <mat-option value="de">Deutsch</mat-option>
+                <mat-option value="attribute1">attribute1</mat-option>
+                <mat-option value="attribute2">attribute2</mat-option>
             </mat-select>
 
         </button>
