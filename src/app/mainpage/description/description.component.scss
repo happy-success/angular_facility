@@ -1,6 +1,22 @@
 .Container {
     padding: 12.5% 13.7%;
 
+    .containerTitle {
+        text-align: left;
+        font: Regular 14px/17px Roboto;
+        letter-spacing: 0px;
+        color: #000000;
+        opacity: 1;
+    }
+
+    .containerText {
+        text-align: left;
+        font: Italic 12px/14px Roboto;
+        letter-spacing: 0.6px;
+        color: #00000080;
+        opacity: 1;
+    }
+    
     .Namefield {
         padding-bottom: 6px;
     }
@@ -11,7 +27,11 @@
             justify-content: space-between;
         }
 
-        padding-bottom: 6px;
+        padding-bottom: 14px;
+    }
+
+    .Sitefield {
+        padding-bottom: 16px;
     }
 
     .Attributes {
@@ -20,7 +40,12 @@
             justify-content: space-between;
         }
 
-        padding-bottom: 6px;
+        padding-bottom: 15px;
+
+        mat-icon {
+            font-size: 40px;
+            margin-left: -16px;
+        }
     }
 
     .InputForm {
@@ -31,6 +56,24 @@
             background-color: #9999991A;
             height: 37px;
         }
+
+    }
+
+    .Tagsfield {
+        padding-bottom: 13px;
+
+        mat-form-field {
+            width: 100%;
+        }
+    }
+
+    .Imagesfield {
+        padding-bottom: 18.5px;
+
+        .Flex {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 }
 
@@ -39,8 +82,27 @@
     height: 32px;
 }
 
-.mat-form-field-underline {
+.modalBtn {
+    cursor: pointer;
+    font-size: 40px;
+    margin-top: -8px;
+    margin-right: 10px;
+}
+
+.updateBtn {
+    float: right;
+    background: #5500aa;
+    color: #FFFFFF;
+    width: 84px;
+    height: 32px;
+}
+
+::ng-deep .InputForm div.mat-form-field-underline {
     display: none;
+}
+
+::ng-deep .InputForm div.mat-form-field-flex {
+    padding-left: 2%;
 }
 
 ::ng-deep .attSelect div.mat-select-arrow-wrapper {
@@ -49,4 +111,8 @@
 
 ::ng-deep .attSelect.mat-select {
     display: inline;
+}
+
+::ng-deep .Tagsfield div.mat-form-field-underline {
+    display: none;
 }
