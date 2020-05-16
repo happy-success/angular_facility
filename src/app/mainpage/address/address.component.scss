@@ -1,0 +1,104 @@
+.addressContainer {
+
+    .add-title {
+        display: flex;
+        justify-content: space-between;
+
+        h2 {
+            text-align: left;
+            font: Regular 14px/17px Roboto;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
+        }
+
+        .modalCancel {
+            color: #707070;
+            cursor: pointer;
+            font-size: 40px;
+            margin-top: -8px;
+            margin-right: 10px;
+        }
+    }
+
+    .FullWidth {
+        width: 100%;
+
+        mat-label {
+            text-align: left;
+            font: Italic 9px/11px Roboto;
+            letter-spacing: 0px;
+            color: #707070;
+            opacity: 0.5;
+        }
+
+    }
+
+    .locationDes {
+        p {
+            text-align: left;
+            font: Italic 12px/14px Roboto;
+            letter-spacing: 0.6px;
+            color: #00000080;
+            opacity: 1;
+        }
+
+        padding-bottom: 8px;
+    }
+
+    .location {
+        width: 38%;
+
+        display: flex;
+        // justify-content: space-between;
+    }
+
+    .overrideEnable {
+        padding-bottom: 8.95px;
+    }
+
+    .updateBtn {
+        float: right;
+        background: #5500aa;
+        color: #FFFFFF;
+        width: 84px;
+        height: 32px;
+    }
+}
+
+::ng-deep mat-dialog-container {
+    padding: 19px 7px 42.5px 7px  !important;
+}
+
+::ng-deep .FullWidth div.mat-form-field-flex {
+    padding-top: 14px;
+}
+
+::ng-deep .FullWidth div.mat-select-arrow-wrapper {
+    padding-top: 15px;
+}
+
+::ng-deep .locationInput div.mat-form-field-flex {
+    padding-top: 14px;
+}
+
+::ng-deep .FullWidth div.mat-form-field-underline {
+    display: none;
+}
+
+::ng-deep .locationInput div.mat-form-field-underline {
+    display: none;
+}
+
+::ng-deep .FullWidth div.mat-form-field-wrapper {
+    padding-bottom: 8px;
+}
+
+::ng-deep .locationInput div.mat-form-field-wrapper {
+    width: 122px;
+    padding-right: 31px;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #008466;
+}

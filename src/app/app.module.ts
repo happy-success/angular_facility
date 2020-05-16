@@ -20,6 +20,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -45,6 +49,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatChipsModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

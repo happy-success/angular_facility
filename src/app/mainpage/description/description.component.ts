@@ -1,10 +1,13 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 import { appTags } from 'src/app/data/app-tags';
 import { facilityAttributesPickList } from 'src/app/data/facility1-config';
 
 import { DynamicComponent } from './dynamic/dynamic.component';
+import { AddressComponent } from '../address/address.component';
+import { ImagesComponent } from '../images/images.component';
 
 @Component({
   selector: 'app-description',
@@ -17,6 +20,24 @@ export class DescriptionComponent implements OnInit {
 
   }
 
+  constructor(public dialog: MatDialog, private componentFactoryResolver: ComponentFactoryResolver) {
+    console.log("this is constructor");
+  }
+
+  // ADDRESS
+  openAddressModal(): void {
+    const dialogRef = this.dialog.open(AddressComponent, {
+      width: '320px', maxWidth: '320px', disableClose: true
+    });
+  }
+
+  // IMAGE
+  openImageModal(): void {
+    const dialogRef = this.dialog.open(ImagesComponent, {
+      width: '320px', maxWidth: '320px', disableClose: true
+    });
+  }
+
   // SITE
   selected = '';
   siteChange(e) {
@@ -27,7 +48,6 @@ export class DescriptionComponent implements OnInit {
   attributeList: Array<{ key: string, label: string, controlType: string, type: string }> = facilityAttributesPickList;
 
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
   attChange(e) {
     console.log(e.value);
     let att = e.value;

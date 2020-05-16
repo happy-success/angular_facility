@@ -16,7 +16,7 @@
         color: #00000080;
         opacity: 1;
     }
-    
+
     .Namefield {
         padding-bottom: 6px;
     }
@@ -53,14 +53,14 @@
 
         .FullWidth {
             width: 100%;
-            background-color: #9999991A;
-            height: 37px;
+            // height: 37px;
+            // background-color: #9999991A;
         }
 
     }
 
     .Tagsfield {
-        padding-bottom: 13px;
+        padding-bottom: 26px;
 
         mat-form-field {
             width: 100%;
@@ -83,6 +83,7 @@
 }
 
 .modalBtn {
+    color: #707070;
     cursor: pointer;
     font-size: 40px;
     margin-top: -8px;
@@ -97,12 +98,22 @@
     height: 32px;
 }
 
+::ng-deep .mat-form-field-flex>.mat-form-field-infix {
+    padding: 0px 0px !important;
+    height: 26px;
+    border: none;
+}
+
 ::ng-deep .InputForm div.mat-form-field-underline {
     display: none;
 }
 
 ::ng-deep .InputForm div.mat-form-field-flex {
     padding-left: 2%;
+}
+
+::ng-deep .Sitefield div.mat-select-arrow-wrapper {
+    padding-top: 15px;
 }
 
 ::ng-deep .attSelect div.mat-select-arrow-wrapper {

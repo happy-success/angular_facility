@@ -5,7 +5,7 @@
             twice before editing the
             name and location of your facility.</p>
         <div class="InputForm">
-            <mat-form-field appearance="" class="FullWidth">
+            <mat-form-field appearance="fill" class="FullWidth">
                 <input matInput class="" placeholder="Facility Name">
             </mat-form-field>
         </div>
@@ -14,14 +14,15 @@
         <h2 class="containerTitle">Address</h2>
         <div class="Flex">
             <p class="containerText">Edocuments Ltd, 32 Waterhouse Business centre, Chelmsford, Essex, CM ...</p>
-            <mat-icon class="modalBtn" [ngStyle]="{'color': '#707070'}">play_circle_outline</mat-icon>
+            <mat-icon class="modalBtn" (click)="openAddressModal()">play_circle_outline
+            </mat-icon>
         </div>
     </div>
     <div class="Sitefield">
         <h2 class="containerTitle">Site</h2>
         <p class="containerText">This facility belongs to this site :</p>
         <div class="InputForm">
-            <mat-form-field appearance="" class="FullWidth">
+            <mat-form-field appearance="fill" class="FullWidth">
                 <mat-select [(value)]="selected" (selectionChange)="siteChange($event)"
                     placeholder="Site (please select)">
                     <mat-option value="Upper School">Upper School</mat-option>
@@ -41,8 +42,6 @@
             <mat-icon [ngStyle]="{'color': '#707070'}">add_circle</mat-icon>
 
             <mat-select #selectLan [(value)]="selectedAtt" (selectionChange)="attChange($event)" class="attSelect">
-                <!-- <mat-option value="attribute1">attribute1</mat-option>
-                <mat-option value="attribute2">attribute2</mat-option> -->
                 <mat-option *ngFor="let topping of attributeList" [value]="topping['label']">{{topping['label']}}
                 </mat-option>
             </mat-select>
@@ -51,7 +50,7 @@
     </div>
     <div class="Tagsfield">
         <h2 class="containerTitle">Tags</h2>
-        <mat-form-field>
+        <mat-form-field appearance="">
             <mat-label>Tags</mat-label>
             <mat-select [formControl]="toppingsControl" multiple>
 
@@ -79,7 +78,7 @@
         <div class="Flex">
             <p class="containerText">These images are used on the facilities overview to make identifying a facility
                 easier.</p>
-            <mat-icon class="modalBtn" [ngStyle]="{'color': '#707070'}">play_circle_outline</mat-icon>
+            <mat-icon class="modalBtn" [ngStyle]="{'color': '#707070'}" (click)="openImageModal()">play_circle_outline</mat-icon>
         </div>
     </div>
     <button mat-raised-button color="" class="updateBtn">Update</button>
