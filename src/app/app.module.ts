@@ -9,7 +9,6 @@ import { DescriptionComponent } from './mainpage/description/description.compone
 import { AddressComponent } from './mainpage/address/address.component';
 import { ImagesComponent } from './mainpage/images/images.component';
 import { NotFoundComponent } from './mainpage/not-found/not-found.component';
-import { DynamicComponent } from './mainpage/description/dynamic/dynamic.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -34,7 +33,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddressComponent,
     ImagesComponent,
     NotFoundComponent,
-    DynamicComponent,
   ],
   imports: [
     BrowserModule,

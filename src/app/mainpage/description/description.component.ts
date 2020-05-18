@@ -1,11 +1,10 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 import { appTags } from 'src/app/data/app-tags';
 import { facilityAttributesPickList } from 'src/app/data/facility1-config';
 
-import { DynamicComponent } from './dynamic/dynamic.component';
 import { AddressComponent } from '../address/address.component';
 import { ImagesComponent } from '../images/images.component';
 
@@ -16,12 +15,22 @@ import { ImagesComponent } from '../images/images.component';
 })
 export class DescriptionComponent implements OnInit {
 
-  ngOnInit(): void {
-
+  constructor(public dialog: MatDialog) {
+    console.log("this is constructor");
   }
 
-  constructor(public dialog: MatDialog, private componentFactoryResolver: ComponentFactoryResolver) {
-    console.log("this is constructor");
+  ngOnInit(): void {
+    console.log('ngOnInit');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // changes.prop contains the old and the new value...
+    console.log('changes: ', changes);
+  }
+
+  // FACILITY NAME
+  facilityName(facilityName: string): void {
+    console.log('facilityName: ', facilityName);
   }
 
   // ADDRESS
@@ -41,29 +50,27 @@ export class DescriptionComponent implements OnInit {
   // SITE
   selected = '';
   siteChange(e) {
-    // console.log(e.value);
+    console.log('siteSelect: ', e.value);
   }
 
   // ATTRIBUTES
   attributeList: Array<{ key: string, label: string, controlType: string, type: string }> = facilityAttributesPickList;
-
-  @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
-  attChange(e) {
-    console.log(e.value);
-    let att = e.value;
-    // create the component factory
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DynamicComponent);
-    // add the component to the view
-    const componentRef = this.container.createComponent(componentFactory);
-    // pass some data to the component
-    componentRef.instance.att = att;
-  }
   selectedAtt = '';
+  attributes = [];
+
+  attChange(e) {
+    let att = e.value;
+    this.attributes.push(att);
+    console.log('attributes: ', this.attributes);
+  }
 
   // TAGS
   toppingsControl = new FormControl([]);
-  // toppingList: string[] = ['general arangements', 'protocol', 'critical', 'headquaters', 'supply chain', 'rfi', 'specific', 'operation', 'maintenance', 'fault finding',];
   toppingList: string[] = appTags;
+
+  tagChange(e) {
+    console.log('tagChange: ', this.toppingsControl.value);
+  }
 
   onToppingRemoved(topping: string) {
     const toppings = this.toppingsControl.value as string[];

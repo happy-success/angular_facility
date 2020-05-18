@@ -36,10 +36,31 @@
 
     .Attributes {
         .Flex {
+
             display: flex;
             justify-content: space-between;
-        }
-
+        
+            .FullWidth {
+                width: 100%;
+                background-color: #9999991A;
+                height: 37px;
+                margin-right: 15px;
+        
+                p {
+                    padding-left: 2%;
+                    color: #707070;
+                    padding-top: 9px;
+                }
+            }
+        
+            .pageBtn {
+                width: 68px;
+                height: 32px;
+            }
+        
+            padding-bottom: 4.62px;
+        }      
+        
         padding-bottom: 15px;
 
         mat-icon {
@@ -122,6 +143,10 @@
 
 ::ng-deep .attSelect.mat-select {
     display: inline;
+}
+
+::ng-deep .Flex span.mat-button-wrapper {
+    margin-left: -3px;
 }
 
 ::ng-deep .Tagsfield div.mat-form-field-underline {

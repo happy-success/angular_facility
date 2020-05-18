@@ -23,7 +23,7 @@ export class ImagesComponent implements OnInit {
         var reader = new FileReader();
 
         reader.onload = (event: any) => {
-          console.log(event.target.result);
+          // console.log(event.target.result);
           this.urls.push(event.target.result);
         }
 

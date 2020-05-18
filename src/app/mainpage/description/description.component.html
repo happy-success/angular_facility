@@ -6,7 +6,7 @@
             name and location of your facility.</p>
         <div class="InputForm">
             <mat-form-field appearance="fill" class="FullWidth">
-                <input matInput class="" placeholder="Facility Name">
+                <input matInput class="" placeholder="Facility Name" (input)="facilityName($event.target.value)">
             </mat-form-field>
         </div>
     </div>
@@ -32,11 +32,18 @@
         </div>
     </div>
     <div class="Attributes">
-        <h2 class="containerTitle">Attributes</h2>
-        <p class="containerText">This dynamic list is from</p>
+        <div>
+            <h2 class="containerTitle">Attributes</h2>
+            <p class="containerText">This dynamic list is from</p>
 
-        <div #container></div>
-
+            <!-- <div #container></div> -->
+            <div class="Flex" *ngFor="let att of attributes">
+                <div class="FullWidth">
+                    <p class="attText">{{ att }}</p>
+                </div>
+                <button mat-raised-button color="warn" class="pageBtn">Delete</button>
+            </div>
+        </div>
         <button mat-icon-button matTooltip="Attributes" (click)=selectLan.open()>
 
             <mat-icon [ngStyle]="{'color': '#707070'}">add_circle</mat-icon>
@@ -52,7 +59,7 @@
         <h2 class="containerTitle">Tags</h2>
         <mat-form-field appearance="">
             <mat-label>Tags</mat-label>
-            <mat-select [formControl]="toppingsControl" multiple>
+            <mat-select [formControl]="toppingsControl" multiple (selectionChange)="tagChange($event)">
 
                 <mat-select-trigger>
                     <mat-chip-list>
@@ -78,7 +85,8 @@
         <div class="Flex">
             <p class="containerText">These images are used on the facilities overview to make identifying a facility
                 easier.</p>
-            <mat-icon class="modalBtn" [ngStyle]="{'color': '#707070'}" (click)="openImageModal()">play_circle_outline</mat-icon>
+            <mat-icon class="modalBtn" [ngStyle]="{'color': '#707070'}" (click)="openImageModal()">play_circle_outline
+            </mat-icon>
         </div>
     </div>
     <button mat-raised-button color="" class="updateBtn">Update</button>
