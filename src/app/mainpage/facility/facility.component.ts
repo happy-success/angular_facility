@@ -9,11 +9,11 @@ import { AddressComponent } from '../address/address.component';
 import { ImagesComponent } from '../images/images.component';
 
 @Component({
-  selector: 'app-description',
-  templateUrl: './description.component.html',
-  styleUrls: ['./description.component.scss']
+  selector: 'app-facility',
+  templateUrl: './facility.component.html',
+  styleUrls: ['./facility.component.scss']
 })
-export class DescriptionComponent implements OnInit {
+export class FacilityComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {
     console.log("this is constructor");
@@ -65,17 +65,17 @@ export class DescriptionComponent implements OnInit {
   }
 
   // TAGS
-  toppingsControl = new FormControl([]);
-  toppingList: string[] = appTags;
+  tagsControl = new FormControl([]);
+  tagList: string[] = appTags;
 
   tagChange(e) {
-    console.log('tagChange: ', this.toppingsControl.value);
+    console.log('tagChange: ', this.tagsControl.value);
   }
 
-  onToppingRemoved(topping: string) {
-    const toppings = this.toppingsControl.value as string[];
-    this.removeFirst(toppings, topping);
-    this.toppingsControl.setValue(toppings); // To trigger change detection
+  onTagRemoved(tag: string) {
+    const tags = this.tagsControl.value as string[];
+    this.removeFirst(tags, tag);
+    this.tagsControl.setValue(tags); // To trigger change detection
   }
 
   private removeFirst<T>(array: T[], toRemove: T): void {

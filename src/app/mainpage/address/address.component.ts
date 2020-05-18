@@ -22,7 +22,7 @@ export class AddressComponent implements OnInit {
   public country: string = `United Kingdom (drop down)`;
   public latitude: string = ``;
   public longitude: string = ``;
-  public addCusForm: FormGroup;
+  public addAddressForm: FormGroup;
   wasFormChanged = false;
 
   constructor(
@@ -31,7 +31,7 @@ export class AddressComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.addCusForm = this.fb.group({
+    this.addAddressForm = this.fb.group({
       IdProof: null,
       // Validators.pattern('[a-zA-Z]+([a-zA-Z ]+)*')
       line_1: [this.line1, [Validators.required]],
@@ -46,8 +46,8 @@ export class AddressComponent implements OnInit {
     this.breakpoint = window.innerWidth <= 600 ? 1 : 2; // Breakpoint observer code
   }
 
-  public onAddCus(): void {
-    this.markAsDirty(this.addCusForm);
+  public onUpdate(): void {
+    this.markAsDirty(this.addAddressForm);
   }
 
   // COUNTRY HANDLE
@@ -60,7 +60,7 @@ export class AddressComponent implements OnInit {
 
   openDialog(): void {
     console.log(this.wasFormChanged);
-    // if(this.addCusForm.dirty) {
+    // if(this.addAddressForm.dirty) {
     //   const dialogRef = this.dialog.open(DeleteComponent, {
     //     width: '340px',
     //   });

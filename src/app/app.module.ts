@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
-import { DescriptionComponent } from './mainpage/description/description.component';
+import { FacilityComponent } from './mainpage/facility/facility.component';
 import { AddressComponent } from './mainpage/address/address.component';
 import { ImagesComponent } from './mainpage/images/images.component';
 import { NotFoundComponent } from './mainpage/not-found/not-found.component';
@@ -29,7 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     MainpageComponent,
-    DescriptionComponent,
+    FacilityComponent,
     AddressComponent,
     ImagesComponent,
     NotFoundComponent,

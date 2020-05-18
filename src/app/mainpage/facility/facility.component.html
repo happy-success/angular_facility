@@ -49,7 +49,7 @@
             <mat-icon [ngStyle]="{'color': '#707070'}">add_circle</mat-icon>
 
             <mat-select #selectLan [(value)]="selectedAtt" (selectionChange)="attChange($event)" class="attSelect">
-                <mat-option *ngFor="let topping of attributeList" [value]="topping['label']">{{topping['label']}}
+                <mat-option *ngFor="let tag of attributeList" [value]="tag['label']">{{tag['label']}}
                 </mat-option>
             </mat-select>
 
@@ -59,26 +59,26 @@
         <h2 class="containerTitle">Tags</h2>
         <mat-form-field appearance="">
             <mat-label>Tags</mat-label>
-            <mat-select [formControl]="toppingsControl" multiple (selectionChange)="tagChange($event)">
+            <mat-select [formControl]="tagsControl" multiple (selectionChange)="tagChange($event)">
 
                 <mat-select-trigger>
                     <mat-chip-list>
-                        <mat-chip *ngFor="let topping of toppingsControl.value" [removable]="true"
-                            (removed)="onToppingRemoved(topping)">
-                            {{ topping }}
+                        <mat-chip *ngFor="let tag of tagsControl.value" [removable]="true"
+                            (removed)="onTagRemoved(tag)">
+                            {{ tag }}
                             <mat-icon matChipRemove [ngStyle]="{'color': '#707070'}">cancel</mat-icon>
                         </mat-chip>
                     </mat-chip-list>
                 </mat-select-trigger>
 
-                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}
+                <mat-option *ngFor="let tag of tagList" [value]="tag">{{tag}}
                 </mat-option>
 
             </mat-select>
         </mat-form-field>
 
         <br />
-        <!-- {{ toppingsControl.value | json }} -->
+        <!-- {{ tagsControl.value | json }} -->
     </div>
     <div class="Imagesfield">
         <h2 class="containerTitle">Images</h2>

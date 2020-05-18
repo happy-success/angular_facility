@@ -4,7 +4,7 @@
         <mat-icon class="modalCancel" (click)="openDialog()">cancel</mat-icon>
     </div>
     <div>
-        <form [formGroup]="addCusForm" (change)="formChanged()">
+        <form [formGroup]="addAddressForm" (change)="formChanged()">
             <mat-form-field appearance="fill" class="FullWidth">
                 <mat-label>Line 1</mat-label>
                 <input matInput placeholder="Line 1" value={{line1}} formControlName="line_1" required>
@@ -35,7 +35,7 @@
                 <!-- <input matInput placeholder="United Kingdom (drop down)" value={{country}} formControlName="country" required> -->
                 <mat-select #selectLan [(value)]="selectedCountry" (selectionChange)="countryChange($event)" class=""
                     formControlName="country" placeholder="United Kingdom (drop down)">
-                    <mat-option *ngFor="let topping of countryList" [value]="topping">{{topping}}
+                    <mat-option *ngFor="let country of countryList" [value]="country">{{country}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -60,7 +60,7 @@
             <mat-checkbox class="overrideEnable">manual override enabled</mat-checkbox>
 
             <div class="btn-sec">
-                <button mat-raised-button color="" class="updateBtn" (click)="onAddCus()">Update</button>
+                <button mat-raised-button color="" class="updateBtn" (click)="onUpdate()">Update</button>
             </div>
 
         </form>
