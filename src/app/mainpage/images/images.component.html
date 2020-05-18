@@ -1,1 +1,19 @@
-<p>images works!</p>
+<div class="imageContainer">
+    <div class="add-title">
+        <h2 class="primary">Images</h2>
+        <mat-icon class="modalCancel" (click)="openDialog()">cancel</mat-icon>
+    </div>
+    <div class="imageList" *ngFor='let url of urls'>
+        <mat-card>
+            <img [src]="url" width="160" height="90">
+        </mat-card>
+        <button mat-raised-button color="warn" class="pageBtn">Delete</button>
+        <br />
+    </div>
+    <mat-card class="imageAdd">
+        <label>
+            <input class="fileUpload" type='file' (change)="onSelectFile($event)" multiple>
+            <mat-icon [ngStyle]="{'color': '#707070'}">add_circle</mat-icon>
+        </label>
+    </mat-card>
+</div>

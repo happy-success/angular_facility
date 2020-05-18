@@ -1,0 +1,68 @@
+.imageContainer {
+
+    .add-title {
+        display: flex;
+        justify-content: space-between;
+
+        h2 {
+            text-align: left;
+            font: Regular 14px/17px Roboto;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
+        }
+
+        .modalCancel {
+            color: #707070;
+            cursor: pointer;
+            font-size: 40px;
+            margin-top: -8px;
+            margin-right: 10px;
+        }
+    }
+
+    .imageList {
+        display: flex;
+        padding-bottom: 8px;
+
+        .pageBtn {
+            width: 93px;
+            height: 32px;
+            margin-top: 27px;
+            margin-left: 29.5px;
+        }
+
+        .mat-card {
+            padding: 0;
+            height: 90px;
+            width: 160px;
+        }
+    }
+
+    .imageAdd {
+        padding: 0;
+        width: 160px;
+        height: 90px;
+
+        label {
+            display: inline-block;
+            height: 100%;
+            cursor: pointer;
+            background: #f2f2f2;
+
+            .mat-icon {
+                font-size: 40px;
+                padding-left: 40%;
+            }
+        }
+
+        .fileUpload {
+            width: 100%;
+            opacity: 0;
+        }
+    }
+}
+
+::ng-deep mat-dialog-container {
+    padding: 19px 7px 42.5px 7px !important;
+}

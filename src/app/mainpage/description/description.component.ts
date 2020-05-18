@@ -34,7 +34,7 @@ export class DescriptionComponent implements OnInit {
   // IMAGE
   openImageModal(): void {
     const dialogRef = this.dialog.open(ImagesComponent, {
-      width: '320px', maxWidth: '320px', disableClose: true
+      width: '320px', maxWidth: '320px', height: '568px', disableClose: true
     });
   }
 
