@@ -1,12 +1,11 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 import { appTags } from 'src/app/data/app-tags';
 import { facilityAttributesPickList } from 'src/app/data/facility1-config';
 
-import { AddressComponent } from '../address/address.component';
-import { ImagesComponent } from '../images/images.component';
+import { PopupModelService } from './popup-model.service';
 
 @Component({
   selector: 'app-facility',
@@ -15,7 +14,7 @@ import { ImagesComponent } from '../images/images.component';
 })
 export class FacilityComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private popupModel: PopupModelService) {
     console.log("this is constructor");
   }
 
@@ -24,7 +23,6 @@ export class FacilityComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // changes.prop contains the old and the new value...
     console.log('changes: ', changes);
   }
 
@@ -34,23 +32,31 @@ export class FacilityComponent implements OnInit {
   }
 
   // ADDRESS
+  addressData = [];
+  addUpdateStatus = false;
   openAddressModal(): void {
-    const dialogRef = this.dialog.open(AddressComponent, {
-      width: '320px', maxWidth: '320px', disableClose: true
+    this.popupModel.openAddressDialog().subscribe(data => {
+      this.addUpdateStatus = true;
+      this.addressData = data;
+      console.log('data: ', this.addressData['line1']);
     });
   }
 
   // IMAGE
+  imageData = [];
   openImageModal(): void {
-    const dialogRef = this.dialog.open(ImagesComponent, {
-      width: '320px', maxWidth: '320px', height: '568px', disableClose: true
+    this.popupModel.openImageDialog().subscribe(imageData => {
+      console.log('image data: ', imageData.imageNameLists);
+      this.imageData = imageData.imageNameLists;
     });
   }
 
   // SITE
   selected = '';
+  siteId = '';
   siteChange(e) {
     console.log('siteSelect: ', e.value);
+    this.siteId = e.value;
   }
 
   // ATTRIBUTES
@@ -61,7 +67,11 @@ export class FacilityComponent implements OnInit {
   attChange(e) {
     let att = e.value;
     this.attributes.push(att);
-    console.log('attributes: ', this.attributes);
+  }
+
+  attDelete(att) {
+    console.log(att);
+    this.removeFirst(this.attributes, att);
   }
 
   // TAGS
@@ -75,7 +85,8 @@ export class FacilityComponent implements OnInit {
   onTagRemoved(tag: string) {
     const tags = this.tagsControl.value as string[];
     this.removeFirst(tags, tag);
-    this.tagsControl.setValue(tags); // To trigger change detection
+    this.tagsControl.setValue(tags);
+    console.log('tagChange: ', this.tagsControl.value);
   }
 
   private removeFirst<T>(array: T[], toRemove: T): void {

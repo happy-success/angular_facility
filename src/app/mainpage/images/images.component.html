@@ -1,13 +1,13 @@
 <div class="imageContainer">
     <div class="add-title">
         <h2 class="primary">Images</h2>
-        <mat-icon class="modalCancel" (click)="openDialog()">cancel</mat-icon>
+        <mat-icon class="modalCancel" (click)="closeModal()" [mat-dialog-close]="imageNameLists">cancel</mat-icon>
     </div>
-    <div class="imageList" *ngFor='let url of urls'>
+    <div class="imageList" *ngFor='let url of imageLists | keyvalue'>
         <mat-card>
-            <img [src]="url" width="160" height="90">
+            <img [src]="url.value" width="160" height="90">
         </mat-card>
-        <button mat-raised-button color="warn" class="pageBtn">Delete</button>
+        <button mat-raised-button color="warn" class="imageDeleteBtn" (click)="onImageRemove(url)">Delete</button>
         <br />
     </div>
     <mat-card class="imageAdd">

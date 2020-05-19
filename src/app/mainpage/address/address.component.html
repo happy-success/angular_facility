@@ -1,68 +1,65 @@
 <div class="addressContainer">
     <div class="add-title">
         <h2 class="primary">Address</h2>
-        <mat-icon class="modalCancel" (click)="openDialog()">cancel</mat-icon>
+        <mat-icon class="modalCancel" (click)="closeDialog()">cancel</mat-icon>
     </div>
     <div>
-        <form [formGroup]="addAddressForm" (change)="formChanged()">
-            <mat-form-field appearance="fill" class="FullWidth">
-                <mat-label>Line 1</mat-label>
-                <input matInput placeholder="Line 1" value={{line1}} formControlName="line_1" required>
+        <mat-form-field appearance="fill" class="FullWidth">
+            <mat-label>Line 1</mat-label>
+            <input matInput placeholder="Line 1" [(ngModel)]="data.line1">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="FullWidth">
+            <mat-label>Line 2</mat-label>
+            <input matInput placeholder="Line 2" [(ngModel)]="data.line2">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="FullWidth">
+            <mat-label>Line 3</mat-label>
+            <input matInput placeholder="Line 3" [(ngModel)]="data.line3">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="FullWidth">
+            <mat-label>County / State</mat-label>
+            <input matInput placeholder="County / State" [(ngModel)]="data.state">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="FullWidth">
+            <mat-label>Post code / Zip</mat-label>
+            <input matInput placeholder="Post code / Zip" [(ngModel)]="data.zip">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="FullWidth">
+            <mat-label>Country</mat-label>
+            <!-- [(value)]="selectedCountry" -->
+            <mat-select [(ngModel)]="data.country" (selectionChange)="countryChange($event)" class=""
+                placeholder="United Kingdom (drop down)">
+                <mat-option *ngFor="let country of countryList" [value]="country">{{country}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="locationDes">
+            <p>For plotting on the map, we will try to automatically set the latitude and longitude from Google, but
+                you can override them manually.</p>
+        </div>
+
+        <div class="location">
+            <mat-form-field appearance="fill" class="locationInput">
+                <mat-label>Latitude</mat-label>
+                <input matInput placeholder="Latitude" [(ngModel)]="data.latitude">
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="FullWidth">
-                <mat-label>Line 2</mat-label>
-                <input matInput placeholder="Line 2" value={{line2}} formControlName="line_2" required>
+            <mat-form-field appearance="fill" class="locationInput">
+                <mat-label>Longitude</mat-label>
+                <input matInput placeholder="Longitude" [(ngModel)]="data.longitude">
             </mat-form-field>
+        </div>
 
-            <mat-form-field appearance="fill" class="FullWidth">
-                <mat-label>Line 3</mat-label>
-                <input matInput placeholder="Line 3" value={{line3}} formControlName="line_3" required>
-            </mat-form-field>
+        <mat-checkbox class="overrideEnable">manual override enabled</mat-checkbox>
 
-            <mat-form-field appearance="fill" class="FullWidth">
-                <mat-label>County / State</mat-label>
-                <input matInput placeholder="County / State" value={{state}} formControlName="state" required>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" class="FullWidth">
-                <mat-label>Post code / Zip</mat-label>
-                <input matInput placeholder="Post code / Zip" value={{zip}} formControlName="zip" required>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" class="FullWidth">
-                <mat-label>Country</mat-label>
-                <!-- <input matInput placeholder="United Kingdom (drop down)" value={{country}} formControlName="country" required> -->
-                <mat-select #selectLan [(value)]="selectedCountry" (selectionChange)="countryChange($event)" class=""
-                    formControlName="country" placeholder="United Kingdom (drop down)">
-                    <mat-option *ngFor="let country of countryList" [value]="country">{{country}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <div class="locationDes">
-                <p>For plotting on the map, we will try to automatically set the latitude and longitude from Google, but
-                    you can override them manually.</p>
-            </div>
-
-            <div class="location">
-                <mat-form-field appearance="fill" class="locationInput">
-                    <mat-label>Latitude</mat-label>
-                    <input matInput placeholder="Latitude" value={{latitude}} formControlName="latitude" required>
-                </mat-form-field>
-
-                <mat-form-field appearance="fill" class="locationInput">
-                    <mat-label>Longitude</mat-label>
-                    <input matInput placeholder="Longitude" value={{longitude}} formControlName="longitude" required>
-                </mat-form-field>
-            </div>
-
-            <mat-checkbox class="overrideEnable">manual override enabled</mat-checkbox>
-
-            <div class="btn-sec">
-                <button mat-raised-button color="" class="updateBtn" (click)="onUpdate()">Update</button>
-            </div>
-
-        </form>
+        <div class="btn-sec">
+            <button mat-raised-button color="" class="updateBtn" [mat-dialog-close]="data">Update</button>
+        </div>
     </div>
 </div>

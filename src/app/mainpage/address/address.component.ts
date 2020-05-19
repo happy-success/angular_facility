@@ -1,10 +1,18 @@
-import { Component, OnInit, VERSION, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { countryList } from 'src/app/data/app-country-list';
 
-import { Router } from '@angular/router';
+export interface DialogData {
+  line1: string;
+  line2: string;
+  line3: string;
+  state: string;
+  zip: string;
+  country: string;
+  latitude: string;
+  longitude: string;
+}
 
 @Component({
   selector: 'app-address',
@@ -14,40 +22,17 @@ import { Router } from '@angular/router';
 export class AddressComponent implements OnInit {
 
   public breakpoint: number; // Breakpoint observer code
-  public line1: string = `Edocuments Ltd`;
-  public line2: string = `32 Waterhouse Business Centre`;
-  public line3: string = `Chelmsford`;
-  public state: string = `Essex`;
-  public zip: string = `CM3 4EG`;
-  public country: string = `United Kingdom (drop down)`;
-  public latitude: string = ``;
-  public longitude: string = ``;
-  public addAddressForm: FormGroup;
-  wasFormChanged = false;
 
   constructor(
-    private fb: FormBuilder,
-    public dialog: MatDialog
-  ) { }
-
-  ngOnInit(): void {
-    this.addAddressForm = this.fb.group({
-      IdProof: null,
-      // Validators.pattern('[a-zA-Z]+([a-zA-Z ]+)*')
-      line_1: [this.line1, [Validators.required]],
-      line_2: [this.line2, [Validators.required]],
-      line_3: [this.line3, [Validators.required]],
-      state: [this.state, [Validators.required]],
-      zip: [this.zip, [Validators.required]],
-      country: [this.country, [Validators.required]],
-      latitude: [this.latitude, [Validators.required]],
-      longitude: [this.longitude, [Validators.required]],
-    });
-    this.breakpoint = window.innerWidth <= 600 ? 1 : 2; // Breakpoint observer code
+    public dialog: MatDialog,
+    public addressdialogRef: MatDialogRef<AddressComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {
+    // console.log('inject data: ',this.data);
   }
 
-  public onUpdate(): void {
-    this.markAsDirty(this.addAddressForm);
+  ngOnInit(): void {
+    this.breakpoint = window.innerWidth <= 600 ? 1 : 2; // Breakpoint observer code
   }
 
   // COUNTRY HANDLE
@@ -58,32 +43,13 @@ export class AddressComponent implements OnInit {
     console.log(e.value);
   }
 
-  openDialog(): void {
-    console.log(this.wasFormChanged);
-    // if(this.addAddressForm.dirty) {
-    //   const dialogRef = this.dialog.open(DeleteComponent, {
-    //     width: '340px',
-    //   });
-    // } else {
+  closeDialog(): void {
     this.dialog.closeAll();
-    // }
   }
 
   // tslint:disable-next-line:no-any
   public onResize(event: any): void {
     this.breakpoint = event.target.innerWidth <= 600 ? 1 : 2;
-  }
-
-  private markAsDirty(group: FormGroup): void {
-    group.markAsDirty();
-    // tslint:disable-next-line:forin
-    for (const i in group.controls) {
-      group.controls[i].markAsDirty();
-    }
-  }
-
-  formChanged() {
-    this.wasFormChanged = true;
   }
 
 }

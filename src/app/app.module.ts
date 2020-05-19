@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { PopupModelService } from './mainpage/facility/popup-model.service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
@@ -51,7 +53,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatGridListModule,
     MatCheckboxModule
   ],
-  providers: [],
+  providers: [PopupModelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

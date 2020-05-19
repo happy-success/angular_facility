@@ -53,9 +53,10 @@
                 }
             }
         
-            .pageBtn {
+            .attDeleteBtn {
                 width: 68px;
                 height: 32px;
+                margin-top: 5px;
             }
         
             padding-bottom: 4.62px;
@@ -94,11 +95,6 @@
             justify-content: space-between;
         }
     }
-}
-
-.pageBtn {
-    margin-top: 5px;
-    height: 32px;
 }
 
 .modalBtn {

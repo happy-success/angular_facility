@@ -13,7 +13,9 @@
     <div class="Addressfield">
         <h2 class="containerTitle">Address</h2>
         <div class="Flex">
-            <p class="containerText">Edocuments Ltd, 32 Waterhouse Business centre, Chelmsford, Essex, CM ...</p>
+            <p class="containerText">
+                {{addressData['line1']}}{{addressData['line1']?', ':null}}{{addressData['line2']}}{{addressData['line2']?', ':null}}{{addressData['line3']}}
+            </p>
             <mat-icon class="modalBtn" (click)="openAddressModal()">play_circle_outline
             </mat-icon>
         </div>
@@ -36,19 +38,18 @@
             <h2 class="containerTitle">Attributes</h2>
             <p class="containerText">This dynamic list is from</p>
 
-            <!-- <div #container></div> -->
             <div class="Flex" *ngFor="let att of attributes">
                 <div class="FullWidth">
                     <p class="attText">{{ att }}</p>
                 </div>
-                <button mat-raised-button color="warn" class="pageBtn">Delete</button>
+                <button mat-raised-button color="warn" class="attDeleteBtn" (click)="attDelete(att)">Delete</button>
             </div>
         </div>
-        <button mat-icon-button matTooltip="Attributes" (click)=selectLan.open()>
+        <button mat-icon-button matTooltip="Attributes" (click)=selectAtt.open()>
 
             <mat-icon [ngStyle]="{'color': '#707070'}">add_circle</mat-icon>
 
-            <mat-select #selectLan [(value)]="selectedAtt" (selectionChange)="attChange($event)" class="attSelect">
+            <mat-select #selectAtt [(value)]="selectedAtt" (selectionChange)="attChange($event)" class="attSelect">
                 <mat-option *ngFor="let tag of attributeList" [value]="tag['label']">{{tag['label']}}
                 </mat-option>
             </mat-select>
