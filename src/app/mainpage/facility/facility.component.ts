@@ -1,6 +1,7 @@
 import { Component, OnInit, SimpleChanges, Inject } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { appTags } from 'src/app/mock/app-tags';
 import { facilityAttributesPickList } from 'src/app/mock/facility1-config';
@@ -14,7 +15,7 @@ import { PopupModelService } from './popup-model.service';
 })
 export class FacilityComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private popupModel: PopupModelService) {
+  constructor(public dialog: MatDialog, private popupModel: PopupModelService, private _snackBar: MatSnackBar) {
     console.log("this is constructor");
   }
 
@@ -29,7 +30,7 @@ export class FacilityComponent implements OnInit {
   // FACILITY NAME
   facility_name = '';
   facilityName(facilityName: string): void {
-    console.log('facilityName: ', facilityName);
+    // console.log('facilityName: ', facilityName);
     this.facility_name = facilityName;
   }
 
@@ -98,12 +99,24 @@ export class FacilityComponent implements OnInit {
 
   // UPDATE
   onUpdate() {
-    console.log('facility name: ', this.facility_name);
-    console.log('adress: ', this.addressData);
-    console.log('site id: ', this.siteId);
-    console.log('attributes: ', this.attributes);
-    console.log('tags: ', this.tagsControl.value);
-    console.log('images: ', this.imageData);
+
+    if (this.facility_name === '' || this.facility_name === null || this.facility_name === undefined) {
+      this._snackBar.open('Please fill in the "Facility Name" field!', 'OK', {
+        duration: 3000,
+      });
+    } else if (this.siteId === '' || this.siteId === null || this.siteId === undefined) {
+      this._snackBar.open('Please fill in the "Site" field!', 'OK', {
+        duration: 3000,
+      });
+    } else {
+      console.log('facility name: ', this.facility_name);
+      console.log('adress: ', this.addressData);
+      console.log('site id: ', this.siteId);
+      console.log('attributes: ', this.attributes);
+      console.log('tags: ', this.tagsControl.value);
+      console.log('images: ', this.imageData);
+    }
+
   }
 
 }

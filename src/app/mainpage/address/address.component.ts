@@ -22,6 +22,14 @@ export interface DialogData {
 export class AddressComponent implements OnInit {
 
   public breakpoint: number; // Breakpoint observer code
+  public line1: string;
+  public line2: string;
+  public line3: string;
+  public state: string;
+  public zip: string;
+  public country: string;
+  public latitude: string;
+  public longitude: string;
 
   constructor(
     public dialog: MatDialog,
@@ -36,7 +44,7 @@ export class AddressComponent implements OnInit {
   }
 
   // COUNTRY HANDLE
-  selectedCountry = 'United Kingdom of Great Britain and Northern Ireland (the)';
+  // selectedCountry = 'United Kingdom of Great Britain and Northern Ireland (the)';
   countryList: string[] = countryList;
 
   countryChange(e) {
@@ -44,7 +52,8 @@ export class AddressComponent implements OnInit {
   }
 
   closeDialog(): void {
-    this.dialog.closeAll();
+    // this.dialog.closeAll();
+    this.addressdialogRef.close({ line1: this.line1, line2: this.line2, line3: this.line3, state: this.state, zip: this.zip, country: this.country, latitude: this.latitude, longitude: this.longitude });
   }
 
   // tslint:disable-next-line:no-any

@@ -24,6 +24,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -51,7 +52,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatDialogModule,
     MatGridListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSnackBarModule,
   ],
   providers: [PopupModelService],
   bootstrap: [AppComponent]
