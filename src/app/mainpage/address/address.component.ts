@@ -10,8 +10,8 @@ export interface DialogData {
   state: string;
   zip: string;
   country: string;
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
 }
 
 @Component({
@@ -28,8 +28,8 @@ export class AddressComponent implements OnInit {
   public state: string;
   public zip: string;
   public country: string;
-  public latitude: string;
-  public longitude: string;
+  public latitude: number;
+  public longitude: number;
 
   constructor(
     public dialog: MatDialog,
@@ -49,6 +49,20 @@ export class AddressComponent implements OnInit {
 
   countryChange(e) {
     console.log(e.value);
+  }
+
+  setAll(completed: boolean) {
+    console.log('manual override: ', completed);
+    if (completed == true) {
+      this.data.line1 = '';
+      this.data.line2 = '';
+      this.data.line3 = '';
+      this.data.state = '';
+      this.data.zip = '';
+      this.data.country = '';
+      this.data.latitude = '';
+      this.data.longitude = '';
+    }
   }
 
   closeDialog(): void {

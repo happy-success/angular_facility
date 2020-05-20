@@ -16,8 +16,8 @@ export class PopupModelService {
     state: string;
     zip: string;
     country: string;
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
 
     openAddressDialog(): Observable<any> {
 
