@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { countryList } from 'src/app/data/app-country-list';
+import { countryList } from 'src/app/mock/app-country-list';
 
 export interface DialogData {
   line1: string;

@@ -77,9 +77,7 @@
 
             </mat-select>
         </mat-form-field>
-
         <br />
-        <!-- {{ tagsControl.value | json }} -->
     </div>
     <div class="Imagesfield">
         <h2 class="containerTitle">Images</h2>
@@ -90,5 +88,5 @@
             </mat-icon>
         </div>
     </div>
-    <button mat-raised-button color="" class="updateBtn">Update</button>
+    <button mat-raised-button color="" class="updateBtn" (click)="onUpdate()">Update</button>
 </div>

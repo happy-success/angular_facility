@@ -2,8 +2,8 @@ import { Component, OnInit, SimpleChanges, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
-import { appTags } from 'src/app/data/app-tags';
-import { facilityAttributesPickList } from 'src/app/data/facility1-config';
+import { appTags } from 'src/app/mock/app-tags';
+import { facilityAttributesPickList } from 'src/app/mock/facility1-config';
 
 import { PopupModelService } from './popup-model.service';
 
@@ -27,18 +27,18 @@ export class FacilityComponent implements OnInit {
   }
 
   // FACILITY NAME
+  facility_name = '';
   facilityName(facilityName: string): void {
     console.log('facilityName: ', facilityName);
+    this.facility_name = facilityName;
   }
 
   // ADDRESS
   addressData = [];
-  addUpdateStatus = false;
   openAddressModal(): void {
     this.popupModel.openAddressDialog().subscribe(data => {
-      this.addUpdateStatus = true;
       this.addressData = data;
-      console.log('data: ', this.addressData['line1']);
+      console.log('data: ', this.addressData);
     });
   }
 
@@ -94,6 +94,16 @@ export class FacilityComponent implements OnInit {
     if (index !== -1) {
       array.splice(index, 1);
     }
+  }
+
+  // UPDATE
+  onUpdate() {
+    console.log('facility name: ', this.facility_name);
+    console.log('adress: ', this.addressData);
+    console.log('site id: ', this.siteId);
+    console.log('attributes: ', this.attributes);
+    console.log('tags: ', this.tagsControl.value);
+    console.log('images: ', this.imageData);
   }
 
 }
