@@ -60,8 +60,8 @@ export class AddressComponent implements OnInit {
       this.data.state = '';
       this.data.zip = '';
       this.data.country = '';
-      this.data.latitude = '';
-      this.data.longitude = '';
+      this.data.latitude = 0;
+      this.data.longitude = 0;
     }
   }
 
